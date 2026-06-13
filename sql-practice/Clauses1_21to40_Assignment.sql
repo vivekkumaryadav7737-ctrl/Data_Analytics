@@ -51,14 +51,18 @@ and show only those where avg salary > 50,000,
  order by avg salary descending*/
 select edept,avg(esal) as avg_esal from employees group by edept
 having avg(esal)>50000 order by avg(esal) desc;
+
 #37 Show department-wise count of employees from Delhi city
 SELECT edept,count(*) AS total_employees FROM employees where ecity = 'Delhi' group by edept;
-#38
+
+#38 Show employees from HR or IT department in descending order of salary, only top 2.
 select * from employees 
 where edept in ('HR','IT') order by esal desc limit 2;
-#39 
+
+#39 Show city-wise employee count where count > 1
 select ecity,count(*) from employees group by ecity having count(*)>1 ;
-#40
+
+#40 Find highest paid employee from each department
 select edept, ename, esal 
 from employees e 
 where esal = (SELECT MAX(esal) from employees where edept = e.edept);
